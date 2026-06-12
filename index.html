@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Support and FAQ for MyDoser — Frequency App. Subscriptions, unlocks, refunds, and contact.">
+<title>Support — MyDoser</title>
+<style>
+  :root {
+    --bg: #0B0B1A;
+    --grad-a: #4A00E0;
+    --grad-b: #8E2DE2;
+    --text: #EDEAF7;
+    --muted: rgba(237, 234, 247, 0.65);
+    --faint: rgba(237, 234, 247, 0.45);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.32;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-1 { width: 520px; height: 520px; top: -180px; left: -140px; background: var(--grad-a); }
+  .glow-2 { width: 460px; height: 460px; top: 28%; right: -180px; background: var(--grad-b); }
+  .glow-3 { width: 420px; height: 420px; bottom: -160px; left: 22%; background: #2A0A6E; }
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 20px 40px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #C9B8FF;
+    background: rgba(142, 45, 226, 0.16);
+    border: 1px solid rgba(142, 45, 226, 0.38);
+    border-radius: 999px;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 2.9rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    background: linear-gradient(100deg, #FFFFFF 10%, #C9B8FF 60%, #8E2DE2 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+  .lede { color: var(--muted); font-size: 1.08rem; margin-bottom: 28px; max-width: 56ch; }
+  .contact-hero {
+    background: linear-gradient(135deg, rgba(74, 0, 224, 0.22), rgba(142, 45, 226, 0.14));
+    border: 1px solid rgba(142, 45, 226, 0.35);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 36px;
+    text-align: center;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.30);
+  }
+  .contact-hero p { color: var(--text); margin-bottom: 16px; font-size: 1.05rem; }
+  .email-btn {
+    display: inline-block;
+    padding: 15px 34px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    box-shadow: 0 8px 24px rgba(106, 17, 226, 0.45);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .email-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(106, 17, 226, 0.60); text-decoration: none; }
+  .contact-hero .hint { color: var(--faint); font-size: 0.88rem; margin-top: 14px; margin-bottom: 0; }
+  h2.section { font-size: 1.35rem; font-weight: 800; color: #fff; margin: 8px 0 16px; letter-spacing: -0.01em; }
+  details {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  details[open] { border-color: rgba(142, 45, 226, 0.45); }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 18px 52px 18px 20px;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: #fff;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px; height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  }
+  details[open] summary::after { content: "–"; }
+  .answer { padding: 0 20px 20px; color: var(--muted); }
+  .answer p { margin-bottom: 10px; }
+  .answer p:last-child { margin-bottom: 0; }
+  .answer ul, .answer ol { padding-left: 22px; margin-bottom: 10px; }
+  .answer ul:last-child, .answer ol:last-child { margin-bottom: 0; }
+  .answer li { margin-bottom: 6px; }
+  .answer strong { color: var(--text); font-weight: 600; }
+  a { color: #B08CFF; text-decoration: none; }
+  a:hover { color: #D4BEFF; text-decoration: underline; }
+  footer {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    color: var(--faint);
+    font-size: 0.9rem;
+  }
+  footer .brand { font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  footer .links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; }
+  @media (max-width: 600px) {
+    .wrap { padding: 40px 16px 32px; }
+    .contact-hero { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<main class="wrap">
+  <span class="badge">MyDoser — Frequency App</span>
+  <h1>Support</h1>
+  <p class="lede">Hi there! Need a hand with MyDoser? Browse the answers below — and if anything's still unclear, we're one email away.</p>
+
+  <div class="contact-hero">
+    <p><strong>We usually reply within 1–2 business days.</strong></p>
+    <a class="email-btn" href="mailto:etsyhmet@gmail.com?subject=MyDoser%20Support">Email Support — etsyhmet@gmail.com</a>
+    <p class="hint">Tip: include your device model and iOS version so we can help faster.</p>
+  </div>
+
+  <h2 class="section">Frequently Asked Questions</h2>
+
+  <details>
+    <summary>How do subscriptions work?</summary>
+    <div class="answer">
+      <p><strong>MyDoser Premium</strong> unlocks the entire frequency library. It's available as a <strong>weekly ($4.99)</strong> or <strong>yearly ($39.99)</strong> auto-renewing subscription, billed to your Apple ID through the App Store.</p>
+      <p>Your subscription renews automatically unless you cancel at least 24 hours before the end of the current period. You can manage it anytime in your App Store settings — see "How do I cancel my subscription?" below.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How does the free daily frequency work?</summary>
+    <div class="answer">
+      <p>One selected frequency can be claimed for <strong>free every day</strong>. When you claim it, you can listen to it for a <strong>24-hour window</strong>. Your free claim becomes available again 24 hours after you claim it — so you can enjoy it daily, no subscription needed.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How does the 7-day single-frequency unlock work?</summary>
+    <div class="answer">
+      <p>If there's one frequency you love, you can unlock just that one with a <strong>one-time $1.49 purchase</strong>. The unlock lasts <strong>7 days on the device you purchased it on</strong>, then expires.</p>
+      <p>Because it's a one-time consumable purchase, it <strong>can't be restored</strong> via "Restore Purchases" and doesn't transfer to other devices. For full, ongoing access on all your devices, MyDoser Premium is the better fit.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I restore my purchases?</summary>
+    <div class="answer">
+      <p>If you reinstalled the app or got a new device and your Premium subscription isn't showing:</p>
+      <ol>
+        <li>Make sure you're signed in with the <strong>same Apple ID</strong> you used to subscribe.</li>
+        <li>Open MyDoser and tap <strong>Restore Purchases</strong> (in the Profile / paywall screen).</li>
+      </ol>
+      <p>Note: the one-time 7-day single unlock is a consumable purchase and cannot be restored. If your subscription still doesn't appear, email us and we'll sort it out.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Do I need headphones? What are binaural beats?</summary>
+    <div class="answer">
+      <p><strong>Binaural beats need stereo headphones.</strong> They work by playing a slightly different tone in each ear; your brain perceives the gentle "beat" between them. Without headphones, the effect is lost.</p>
+      <p>Solfeggio tones play the same frequency in both ears, so they sound lovely on speakers too — though headphones still give the most immersive experience.</p>
+      <p>Whatever you listen with, keep the volume at a <strong>comfortable, moderate level</strong>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I cancel my subscription?</summary>
+    <div class="answer">
+      <p>Subscriptions are managed by Apple, not inside the app:</p>
+      <ol>
+        <li>Open <strong>Settings</strong> on your iPhone or iPad.</li>
+        <li>Tap <strong>your name</strong> at the top, then <strong>Subscriptions</strong>.</li>
+        <li>Select <strong>MyDoser</strong> and tap <strong>Cancel Subscription</strong>.</li>
+      </ol>
+      <p>Cancel at least <strong>24 hours before</strong> your renewal date to avoid the next charge. You keep Premium access until the end of the period you've already paid for.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I request a refund?</summary>
+    <div class="answer">
+      <p>All payments are processed by Apple, so refunds are handled directly by Apple:</p>
+      <ol>
+        <li>Go to <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> and sign in with your Apple ID.</li>
+        <li>Find your MyDoser purchase and choose <strong>"Request a refund"</strong>.</li>
+      </ol>
+      <p>Apple makes the final decision on refunds. If you run into trouble, email us — we can't issue Apple refunds ourselves, but we'll do our best to help.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>How do I delete my data?</summary>
+    <div class="answer">
+      <p>MyDoser requires no account and stores your preferences <strong>only on your device</strong>. To erase everything:</p>
+      <ul>
+        <li>Use the <strong>"Delete my data"</strong> option inside the app; or</li>
+        <li>Simply <strong>delete the app</strong> from your device.</li>
+      </ul>
+      <p>For deletion requests relating to subscription receipt-validation records, or any privacy questions, email <a href="mailto:etsyhmet@gmail.com">etsyhmet@gmail.com</a>. See our <a href="https://mericdegirmencioglu.github.io/mydoser-privacy-policy/">Privacy Policy</a> for details.</p>
+    </div>
+  </details>
+
+  <footer>
+    <div class="brand">MyDoser — Frequency App</div>
+    <div>Contact: <a href="mailto:etsyhmet@gmail.com">etsyhmet@gmail.com</a></div>
+    <div class="links">
+      <a href="https://mericdegirmencioglu.github.io/mydoser-privacy-policy/">Privacy Policy</a>
+      <a href="https://mericdegirmencioglu.github.io/mydoser-terms-of-use/">Terms of Use</a>
+      <a href="https://mericdegirmencioglu.github.io/mydoser-marketing/">About MyDoser</a>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
